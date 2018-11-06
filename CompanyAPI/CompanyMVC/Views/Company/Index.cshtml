@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2> Index </h2>
+
+<div align="center">
+    <a href="@Url.Action("Create", "Company")">
+        Add New Company
+    </a> <br /> <br />
+    <table class="table" width="400" cellpadding="20">
+        <tr class="btn-default">
+            <th> CompanyID </th>
+            <th> CompanyName </th>
+            <th> LastName </th>
+            <th> Email </th>
+            <th> Phone </th>
+            <th> Action </th>
+        </tr>
+        @if (ViewBag.listCompanies != null)
+        {
+            foreach (var company in ViewBag.listCompanies)
+            {
+                <tr>
+                    <td>
+                        @company.CompanyId
+                    </td>
+                    <td>
+                        @company.CompanyName
+                    </td>
+                    <td>
+                        @company.LastName
+                    </td>
+                    <td>
+                        @company.Email
+                    </td>
+                    <td>
+                        @company.Phone
+                    </td>
+                    <td>
+                        <a onclick="return confirm('Do you want to Delete?')" href="@Url.Action("Delete","Company",new {id= company.CompanyId})">Delete</a> ||<a href="@Url.Action("Edit","Company",new {id= company.CompanyId})">Edit</a>
+                </tr>
+            }
+        }
+    </table>
+</div>

@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Edit";
+}
+@model CompanyMVC.ViewModel.CompanyViewModel
+
+<h2> Edit </h2> <div align="center" width="500px">
+
+    @using (Html.BeginForm("Edit", "Company", FormMethod.Post))
+    {
+        <table class="table" width="400" cellpadding="20">
+            <tr class="btn-default">
+                <td>
+                    @Html.LabelFor(model => model.company.CompanyName)
+                </td>
+
+                <td>
+                    @Html.TextBoxFor(model => model.company.CompanyName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.company.LastName)
+                </td>
+
+                <td>
+                    @Html.TextBoxFor(model => model.company.LastName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.company.Email)
+                </td>
+
+                <td>
+                    @Html.TextBoxFor(model => model.company.Email)
+                    @Html.ValidationMessageFor(model => model.company.Email, "", new { @class = "error" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.company.Phone)
+                </td>
+
+                <td>
+                    @Html.TextBoxFor(model => model.company.Phone)
+                    @Html.ValidationMessageFor(model => model.company.Phone, "", new { @class = "error" })
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+
+                <td>
+                    <input type="submit" value="Save" /> &nbsp; <a class="btn-primary" href="javascript:history.back()"> Back </a> @Html.HiddenFor(model => model.company.CompanyId)                    
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+
+<style type="text/css">
+    body {
+        font-family: Arial;
+        font-size: 10pt;
+    }
+
+    .error {
+        color: red;
+    }
+</style>
